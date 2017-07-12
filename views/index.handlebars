@@ -1,0 +1,64 @@
+<div class="snippets-list">
+
+  <h2>Code Snippets</h2>
+  <strong>Displaying snippets</strong>
+  <ul>
+  </ul>
+
+  <div class="img-container pull-left">
+
+    {{#if snippetList}}
+
+      {{#each snippetList }}
+ <li>{{title}}</li>
+      {{/each}}
+    {{else}}
+
+    <i>You have no snippets saved </i>
+
+    {{/if}}
+
+</div>
+
+<p></p>
+<p></p>
+
+<div class="snippets-view">
+
+  <div class="snippet-textbox">
+
+    {{#if snippetList}}
+
+      <h2>Viewing Snippet: {{ snippetList.[5].title }}</h2>
+      <br>
+      Language: {{ snippetList.[5].language }}
+      <br>
+      Snippet:  {{ snippetList.[5].snippet }}
+
+      <p></p>
+<!--   Remember to update this to req.params.id esque link  -->
+      <a href="/snippets/test">Add a resource to this snippet</a>
+
+      <p></p>
+
+      Resources:
+      {{#if resources}}
+        {{#each resources }}
+        {{this}}
+        {{/each}}
+
+        {{else}}
+
+        <i>No resources detected</i>
+
+      {{/if}}
+
+    {{else}}
+
+    <i>Your snippets will be displayed here. Some other text can go here as a tutorial </i>
+
+    {{/if}}
+
+  </div>
+
+</div>
