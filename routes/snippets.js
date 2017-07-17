@@ -75,7 +75,9 @@ snipRoutes.post('/snippets/:id', ( req, res ) => {
     post.save()
 
     // send user back to details page, with refreshed data? render works here to actually save that data. but handlebars doesn't see the data
+
     res.render( './snips/snippetDetail', { post: post } )
+    // res.redirect( '/snippets/:id', { post: post } )
   })
 
 })
@@ -90,13 +92,23 @@ snipRoutes.get('/snippets/delete/:id', ( req, res ) => {
 });
 
 //find and delte one resource
-snipRoutes.get('/snippets/:id/delete/', ( req, res ) => {
-  Resource.findOneAndRemove({ title: req.params.id }, function(err) {
-    if (err) throw err;
-    console.log('resource deleted! ');
-     res.redirect( '/')
-  });
-});
+// snipRoutes.get('/snippets/:id/delete/', ( req, res ) => {
+//   Resource.findOneAndRemove({ title: req.params.id }, function(err) {
+//     if (err) throw err;
+//     console.log('resource deleted! ');
+//      res.redirect( '/')
+//   });
+// });
+
+
+//this query won't work because its not in the mongoschema? its in the array of an object
+
+// Snippet.find({}, function(err, users) {
+//   if (err) throw err;
+//
+//   // object of all the users
+//   console.log('my mongo query is here ' + users);
+// });
 
 
 // // schema testing works
@@ -110,6 +122,23 @@ snipRoutes.get('/snippets/:id/delete/', ( req, res ) => {
 // console.log(testResource);
 
 
+// push to tags array
+
+snipRoutes.post('/snippets/:id', ( req, res ) => {
+
+  Snippet.findById( req.params.id, ( err, post ) => {
+
+    post.tags.push( req.body )
+    post.save()
+
+    })
+
+
+    // send user back to details page, with refreshed data? render works here to actually save that data. but handlebars doesn't see the data
+
+    res.render( './snips/snippetDetail', { post: post } )
+    // res.redirect( '/snippets/:id', { post: post } )
+  })
 
 
 

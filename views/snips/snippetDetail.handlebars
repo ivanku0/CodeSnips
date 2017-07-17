@@ -12,7 +12,9 @@ Language: {{ language }}
   </code>
 </blockquote>
 
-Saved Tags:
+<div class="tag-list">
+
+<h2>Saved tags</h2>
 <p></p>
 {{#if tags }}
 
@@ -24,9 +26,28 @@ Saved Tags:
 
   {{ else }}
 
-  <i>No tags saved. <a href="#">Add one!</a></i>
+  <i>No tags saved. Add one below!</i>
 
 {{/if}}
+
+<form class="new-tag" method="POST">
+
+  <p>
+    <label for="name">Add tags</label>
+    <br>
+    <input type="text" name="title" placeholder="Separate tags by commas" />
+  </p>
+
+  <button type="submit">Add tags</button>
+
+</form>
+
+
+</div>
+
+
+<div class="resource-list">
+
 
 
 <h2>Saved resources</h2>
@@ -35,7 +56,7 @@ Saved Tags:
 
   {{#each resources }}
 <li>
-  <a href="{{url}}" target="_blank">{{ title }}</a> --- <a href="/snippets/delete/{{ title }}">Delete?</a>
+  <a href="{{url}}">{{ title }}</a> --- <a href="/snippets/delete/{{ title }}">Delete?</a>
 
   <blockquote cite="{{url}}">
     {{ description }}
@@ -51,6 +72,7 @@ Saved Tags:
 
 {{/if}}
 
+</div>
 
 <h2>Add some resources to help you use this snippet!</h2>
 
