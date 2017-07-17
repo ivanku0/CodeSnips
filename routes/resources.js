@@ -19,6 +19,9 @@ resourceRoutes.get('/test', ( req , res ) => {
 
   })
 
+
+//wont need this since this belongs to snippet
+
 resourceRoutes.post('/test', (req,res) => {
   let resource = new Resource({
     title: String,

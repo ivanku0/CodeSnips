@@ -6,6 +6,7 @@ const snippetSchema = new Schema({
   language: String,
   snippet: String,
   resources: Array,
+  tags: Array,
   favorite: Boolean
 })
 

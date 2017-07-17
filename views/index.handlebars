@@ -10,7 +10,7 @@
     {{#if snippetList}}
 
       {{#each snippetList }}
- <li>{{title}}</li>
+ <li><a href="/snippets/{{ _id }}">{{title}}</a> --- <a href="/snippets/delete/{{ _id }}">Delete</a></li>
       {{/each}}
     {{else}}
 
@@ -23,7 +23,7 @@
 <p></p>
 <p></p>
 
-<div class="snippets-view">
+<!-- <div class="snippets-view">
 
   <div class="snippet-textbox">
 
@@ -35,9 +35,9 @@
       <br>
       Snippet:  {{ snippetList.[5].snippet }}
 
-      <p></p>
+      <p></p> -->
 <!--   Remember to update this to req.params.id esque link  -->
-      <a href="/snippets/test">Add a resource to this snippet</a>
+      <!-- <a href="/snippets/test">Add a resource to this snippet</a>
 
       <p></p>
 
@@ -61,4 +61,4 @@
 
   </div>
 
-</div>
+</div> -->

@@ -1,5 +1,6 @@
 const express = require('express')
 const Snippet = require('../models/Snippet.js')
+const Resource = require('../models/Resource.js')
 const snipRoutes = express.Router()
 
 
@@ -32,6 +33,7 @@ snipRoutes.post('/snippets', (req,res) => {
     language: req.body.language,
     snippet: req.body.snippet,
     resources: [ ],
+    tags: [ ],
     favorite: false
   })
 
@@ -46,6 +48,55 @@ snipRoutes.post('/snippets', (req,res) => {
   res.redirect('/')
 
 })
+
+
+// render a specific page for each snippet
+snipRoutes.get('/snippets/:id', ( req, res ) => {
+  Snippet.findOne({ '_id': req.params.id }, ( err, snippet ) => {
+    console.log( snippet )
+    res.render('./snips/snippetDetail', snippet)
+  })
+})
+
+// save resources to this specific snippet
+snipRoutes.post('/snippets/:id', ( req, res ) => {
+
+  Snippet.findById( req.params.id, ( err, post ) => {
+
+    let resource = new Resource ({
+      title: req.body.title,
+      url: req.body.url,
+      description: req.body.description
+
+    })
+    console.log('now testing my resource here: ' + resource);
+
+    post.resources.push( req.body )
+    post.save()
+
+    // send user back to details page, with refreshed data? render works here to actually save that data. but handlebars doesn't see the data
+    res.render( './snips/snippetDetail', { post: post } )
+  })
+
+})
+
+//find and delete one snippet - this works!
+snipRoutes.get('/snippets/delete/:id', ( req, res ) => {
+  Snippet.findOneAndRemove({ _id: req.params.id }, function(err) {
+    if (err) throw err;
+     console.log('snippet deleted!');
+     res.redirect( '/')
+  });
+});
+
+//find and delte one resource
+snipRoutes.get('/snippets/:id/delete/', ( req, res ) => {
+  Resource.findOneAndRemove({ title: req.params.id }, function(err) {
+    if (err) throw err;
+    console.log('resource deleted! ');
+     res.redirect( '/')
+  });
+});
 
 
 // // schema testing works

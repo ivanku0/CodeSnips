@@ -1,0 +1,79 @@
+<!-- This is the specific page for a single snippet -->
+<p></p>
+<h2>{{ title }}</h2>
+<p></p>
+Language: {{ language }}
+
+<blockquote cite="{{ url }}">
+  <code>
+
+  {{ snippet }}
+
+  </code>
+</blockquote>
+
+Saved Tags:
+<p></p>
+{{#if tags }}
+
+  <ol>
+      <li>{{#each tags }}</li>
+  </ol>
+
+  {{/each}}
+
+  {{ else }}
+
+  <i>No tags saved. <a href="#">Add one!</a></i>
+
+{{/if}}
+
+
+<h2>Saved resources</h2>
+
+{{#if resources}}
+
+  {{#each resources }}
+<li>
+  <a href="{{url}}" target="_blank">{{ title }}</a> --- <a href="/snippets/delete/{{ title }}">Delete?</a>
+
+  <blockquote cite="{{url}}">
+    {{ description }}
+  </blockquote>
+
+
+  </li>
+
+  {{/each}}
+{{else}}
+
+<i>You have no resources saved </i>
+
+{{/if}}
+
+
+<h2>Add some resources to help you use this snippet!</h2>
+
+<form class="new-resource" method="POST">
+
+  <p>
+    <label for="name">Title</label>
+    <br>
+    <input type="text" name="title" placeholder="Enter title" />
+  </p>
+
+  <p>
+    <label for="language">URL</label>
+    <br>
+    <input type="URL" name="url" placeholder="Enter language" />
+  </p>
+
+  <p>
+    <label for="snippet">description</label>
+    <br>
+    <textarea name="description" rows="8" cols="40"></textarea>
+  </p>
+
+  <button type="submit">Add resource</button>
+
+</form>
