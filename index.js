@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const app = express()
 
 //connect to db
-mongoose.connect('mongodb://w4ng:1bigpanda@clustersrevenge-shard-00-00-z110i.mongodb.net:27017,clustersrevenge-shard-00-01-z110i.mongodb.net:27017,clustersrevenge-shard-00-02-z110i.mongodb.net:27017/codesnips?ssl=true&replicaSet=ClustersRevenge-shard-0&authSource=admin')
+mongoose.connect('mongodb://w4ng:1bigpanda@ds027318.mlab.com:27318/clusters-revenge')
 
 //require models
 const Snippet = require('./models/Snippet');

@@ -45,7 +45,11 @@ snipRoutes.post('/snippets', (req,res) => {
   console.log('Snippet saved successfully!')
 })
 
+  //this works redirects to root
   res.redirect('/')
+
+//save ID as part of uRL and pass it into redirect URL
+// grab iD and save as global var
 
 })
 
