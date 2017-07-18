@@ -37,8 +37,8 @@ app.use('/', appRoutes)
 app.use('/', snipRoutes)
 app.use('/snippets', resourceRoutes)
 
-app.listen( 3000, () => {
+app.listen( process.env.PORT || 3000), () => {
 
-  console.log( 'server listening on 3000' )
+  console.log( 'server listening on 3000, locally' )
 
 })
