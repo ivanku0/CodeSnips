@@ -5,11 +5,13 @@
 Language: {{ language }}
 
 <blockquote cite="{{ url }}">
+  <pre>
   <code>
 
   {{ snippet }}
 
   </code>
+  </pre>
 </blockquote>
 
 <div class="tag-list">
@@ -33,9 +35,9 @@ Language: {{ language }}
 <form class="new-tag" method="POST">
 
   <p>
-    <label for="name">Add tags</label>
+    <label for="tags">Add tags</label>
     <br>
-    <input type="text" name="title" placeholder="Separate tags by commas" />
+    <input type="text" name="tags" placeholder="Separate tags by commas" />
   </p>
 
   <button type="submit">Add tags</button>
